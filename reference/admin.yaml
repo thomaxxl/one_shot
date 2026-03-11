@@ -1,0 +1,96 @@
+resources:
+  Airport:
+    endpoint: /api/airports
+    user_key: code
+    label: Airports
+    attributes:
+      id:
+        type: number
+        readonly: true
+      code:
+        type: text
+        required: true
+      name:
+        type: text
+        required: true
+      city:
+        type: text
+        required: true
+      country:
+        type: text
+        required: true
+      flight_count:
+        type: number
+        readonly: true
+      total_passenger_capacity:
+        type: number
+        readonly: true
+    tab_groups:
+      operations:
+        label: Flights
+        relationships:
+          - flights
+  Flight:
+    endpoint: /api/flights
+    user_key: flight_number
+    label: Flights
+    attributes:
+      id:
+        type: number
+        readonly: true
+      flight_number:
+        type: text
+        required: true
+      destination:
+        type: text
+        required: true
+      gate:
+        type: text
+        required: true
+      scheduled_departure_at:
+        type: datetime
+        required: true
+      actual_departure_at:
+        type: datetime
+      duration_hours:
+        type: number
+        required: true
+      passenger_capacity:
+        type: number
+        required: true
+      airport_id:
+        type: reference
+        reference: Airport
+        required: true
+      status_id:
+        type: reference
+        reference: FlightStatus
+        required: true
+    tab_groups:
+      routing:
+        label: Routing
+        relationships:
+          - airport
+          - status
+  FlightStatus:
+    endpoint: /api/flight_statuses
+    user_key: code
+    label: Flight Statuses
+    attributes:
+      id:
+        type: number
+        readonly: true
+      code:
+        type: text
+        required: true
+      label:
+        type: text
+        required: true
+      is_closed:
+        type: boolean
+        required: true
+    tab_groups:
+      flights:
+        label: Flights
+        relationships:
+          - flights

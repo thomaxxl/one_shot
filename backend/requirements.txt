@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+SQLAlchemy
+PyYAML
+LogicBank
+pytest
+httpx
+git+https://github.com/thomaxxl/safrs.git
