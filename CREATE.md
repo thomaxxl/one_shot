@@ -7,8 +7,6 @@ only public resources:
 - npm
 - GitHub
 
-It is based on the working layout in this repository, but it avoids any
-machine-specific paths such as `/Users/...`.
 
 ## Goal
 
